@@ -3,7 +3,15 @@ from beartype import beartype
 
 @beartype
 def gray_code(n: int) -> int:
-    pass
+    """
+    Recode multiplication method by bit operatior.
+
+    :param n: integer
+    :return: gray code of params n
+    """
+    if n < 0:
+        raise ValueError("parameter cannot be negative")
+    return n ^ (n >> 1)
 
 
 def main():
