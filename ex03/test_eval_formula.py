@@ -24,3 +24,5 @@ class TestGrayCode:
             eval_formula('23=')
         with pytest.raises(ValueError):
             eval_formula('^10')
+        with pytest.raises(ValueError):
+            eval_formula('!!!!!01')
