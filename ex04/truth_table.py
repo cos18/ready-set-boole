@@ -32,17 +32,22 @@ class BoolASTNode:
             return bool_dict[self.value]
         match self.value:
             case '!':
-                return not self.left.cal_bool()
+                return not self.left.cal_bool(bool_dict)
             case '&':
-                return self.left.cal_bool() and self.right.cal_bool()
+                return self.left.cal_bool(bool_dict) and self.right.cal_bool(
+                    bool_dict)
             case '|':
-                return self.left.cal_bool() or self.right.cal_bool()
+                return self.left.cal_bool(bool_dict) or self.right.cal_bool(
+                    bool_dict)
             case '^':
-                return self.left.cal_bool() ^ self.right.cal_bool()
+                return self.left.cal_bool(bool_dict) ^ self.right.cal_bool(
+                    bool_dict)
             case '>':
-                return (not self.left.cal_bool()) or self.right.cal_bool()
+                return (not self.left.cal_bool(bool_dict)
+                        ) or self.right.cal_bool(bool_dict)
             case '=':
-                return not (self.left.cal_bool() ^ self.right.cal_bool())
+                return not (self.left.cal_bool(bool_dict)
+                            ^ self.right.cal_bool(bool_dict))
             case _:
                 raise ValueError('Wrong formular character')
 
@@ -76,8 +81,14 @@ class BoolAST:
             print('---|', end='')
         print()
         for bool_state in range(2**len(bool_var_list)):
-            pass
-            # | A | B | C | = |
+            binary_format = ('{0:0' + str(len(bool_var_list)) +
+                             'b}').format(bool_state)
+            for binary_char in binary_format:
+                print(f'| {binary_char} ', end='')
+            bool_dict: Dict[str, bool] = {}
+            for idx in range(len(bool_var_list)):
+                bool_dict[bool_var_list[idx]] = (binary_format[idx] == '1')
+            print(f'| {1 if self.root.cal_bool(bool_dict) else 0} |')
 
 
 @beartype
