@@ -63,6 +63,12 @@ class BoolAST:
                 stack.append(BoolASTNode(f))
                 self.bool_var.add(f)
                 continue
+            if f == '!':
+                if not len(stack):
+                    raise ValueError('Wrong formular character')
+                root = stack.pop()
+                stack.append(BoolASTNode(f, root))
+                continue
             if len(stack) < 2:
                 raise ValueError('Wrong formular character')
             right = stack.pop()

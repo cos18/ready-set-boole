@@ -50,6 +50,12 @@ def eval_formula(formula: str) -> bool:
         if f in '01':
             stack.append(BoolAST(f == '1'))
             continue
+        if f == '!':
+            if not len(stack):
+                raise ValueError('Wrong formular character')
+            root = stack.pop()
+            stack.append(BoolAST(f, root))
+            continue
         if len(stack) < 2:
             raise ValueError('Wrong formular character')
         right = stack.pop()
