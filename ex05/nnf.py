@@ -5,7 +5,7 @@ from BoolAST import BoolAST
 @beartype
 def negation_normal_form(formula: str) -> str:
     ast = BoolAST(formula)
-    ast.normalize()
+    ast.negative_normalize()
     return str(ast)
 
 

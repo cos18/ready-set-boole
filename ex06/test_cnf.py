@@ -11,3 +11,7 @@ class TestCNF:
         assert conjunctive_normal_form('AB&C&D&') == 'ABCD&&&'
         assert conjunctive_normal_form('AB&!C!|') == 'A!B!C!||'
         assert conjunctive_normal_form('AB|!C!&') == 'A!B!C!&&'
+
+    def test_tough_cnf(self):
+        assert conjunctive_normal_form('AB&CD&|') == 'AC|BC|AD|BD|&&&'
+        assert conjunctive_normal_form('AB&C|D|E|') == 'ACDE|||BCDE|||&'

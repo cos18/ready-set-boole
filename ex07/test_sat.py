@@ -7,4 +7,4 @@ class TestSAT:
         assert sat('AB|') == True
         assert sat('AB&') == True
         assert sat('AA!&') == False
-        assert sat('AA^') == True
+        assert sat('AA^') == False
