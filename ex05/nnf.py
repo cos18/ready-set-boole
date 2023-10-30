@@ -1,5 +1,5 @@
 from beartype import beartype
-from BoolAST import BoolAST
+from NNFBoolAST import BoolAST
 
 
 @beartype

@@ -1,5 +1,5 @@
 from nnf import negation_normal_form
-from BoolAST import BoolAST
+from NNFBoolAST import BoolAST
 
 
 class TestBoolAST:
