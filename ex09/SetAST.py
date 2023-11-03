@@ -148,7 +148,7 @@ class SetASTNode:
                         & self.right.cal_set(sets, global_set))
             case '|':
                 return (self.left.cal_set(sets, global_set)
-                        or self.right.cal_set(sets, global_set))
+                        | self.right.cal_set(sets, global_set))
             case _:
                 raise ValueError('Wrong formular character')
 
