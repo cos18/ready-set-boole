@@ -8,3 +8,4 @@ class TestSAT:
         assert sat('AB&') == True
         assert sat('AA!&') == False
         assert sat('AA^') == False
+        assert sat('ABCE^^^') == True

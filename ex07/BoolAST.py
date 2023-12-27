@@ -218,7 +218,6 @@ class BoolAST:
         self.root = new_root
 
     def sat(self):
-        self.conjunctive_normalize()
         bool_var_list = list(self.bool_var)
         for bool_state in range(2**len(bool_var_list)):
             binary_format = '{:0' + str(len(bool_var_list)) + 'b}'
